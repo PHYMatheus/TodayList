@@ -9,5 +9,4 @@ public class TodaylistApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TodaylistApplication.class, args);
 	}
-
 }

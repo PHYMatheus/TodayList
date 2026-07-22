@@ -17,7 +17,7 @@ public class UserModel {
     @Id // <- informs the database that it is a primary key
     @GeneratedValue(generator = "UUID") //<- Generates an ID in the format
     private UUID id;
-
+    @Column(unique = true)//<- Only single users are accepted
     private String username;
     private String password;
     private String name;
