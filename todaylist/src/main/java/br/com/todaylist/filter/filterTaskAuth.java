@@ -5,7 +5,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -23,7 +22,10 @@ public class filterTaskAuth extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
           throws ServletException, IOException {
 
-            var authorization = request.getHeader("Authorization");
+    var servletPath = request.getServletPath();
+      if(servletPath.equals("/tasks/")) {
+
+    var authorization = request.getHeader("Authorization");
       System.out.println("Authorization: ");
       System.out.println(authorization);
 
@@ -39,17 +41,25 @@ public class filterTaskAuth extends OncePerRequestFilter {
       System.out.println(username);
       System.out.println(password);
 
-          //validation users
-      var users = this.userRepository.findByUsername(username);
+      //validation users
+      var users = this.userRepository.findByUsername(username); // <- First user verification
+
       if(users == null){
-        response.sendError(401, "Usuário sem Autorização");
+        response.sendError(401, "Usuário sem Autorização"); // <- If the user is empty, it will return a 401 error.
       }else {
-        var passwordVerify = BCrypt.verifier().verify(password.toCharArray(), users.getPassword());
-        if (passwordVerify.verified)
+        boolean passwordVerify = org.springframework.security.crypto.bcrypt.BCrypt.checkpw(password, users.getPassword());
+        //In the line above, BCrypt retrieves the password from the database
+        // and compares it with the password entered;
+        // if the hash matches the one entered
+        if (passwordVerify){
+          request.setAttribute("idUser", users.getId());
           filterChain.doFilter(request, response);
-        else {
+        } else {
           response.sendError(401);
         }
       }
-    }
+    } else {
+        filterChain.doFilter(request, response);
+      }
+  }
 }
