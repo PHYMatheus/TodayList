@@ -5,11 +5,12 @@
 ### 📝 Organize seu dia. Foque no que realmente importa.
 
 Projeto desenvolvido durante os estudos da **Rocketseat**, com foco na prática de conceitos modernos de desenvolvimento e organização de tarefas.
+Ideia principal foi tirada do aprendizado no MiniCurso Back-end. As demais Alterações se destacam do constante aprendizado, melhorando e Adicionando funcionalidade no Projeto.
 
 <img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-22c55e?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk" />
-<img src="https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=for-the-badge&logo=springboot" />
-<img src="https://img.shields.io/badge/Rocketseat-Discover-8257E5?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Spring_Boot-4.1.0-6DB33F?style=for-the-badge&logo=springboot" />
+<img src="https://img.shields.io/badge/Rocketseat-Daniele Leão-8257E5?style=for-the-badge" />
 <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" />
 
 </div>
@@ -131,7 +132,7 @@ Cada funcionalidade implementada representa um passo importante na construção 
 # 🚧 Status
 
 ```text
-███████████████░░░░░░░░ 60%
+███████████████████░░░░░░ 80%
 ```
 
 > Projeto em desenvolvimento.
