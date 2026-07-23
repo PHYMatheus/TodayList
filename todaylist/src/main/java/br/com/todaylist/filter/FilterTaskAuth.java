@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 @Component // Here, every request passes through this filter.
-public class filterTaskAuth extends OncePerRequestFilter {
+public class FilterTaskAuth extends OncePerRequestFilter {
 
   @Autowired
   private UserRepository userRepository;
